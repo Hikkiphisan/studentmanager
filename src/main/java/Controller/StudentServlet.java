@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.List;
 
 
-@WebServlet(name = "StudentServlet", urlPatterns = "/src/main/webapp/student/")
+@WebServlet(name = "StudentServlet", urlPatterns = "/student")
 public class StudentServlet extends HttpServlet {
     private final StudentService studentService = new StudentServiceImpl();
 
@@ -94,7 +94,7 @@ public class StudentServlet extends HttpServlet {
             request.setAttribute("student", student);
             request.setAttribute("message", "Student information was updated");
 
-            RequestDispatcher dispatcher = request.getRequestDispatcher("src/main/webapp/student/edit.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("student/edit.jsp");
             dispatcher.forward(request, response);
         }
     }
@@ -123,13 +123,13 @@ public class StudentServlet extends HttpServlet {
             response.sendRedirect("error-404.jsp");
         } else {
             request.setAttribute("student", student);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("src/main/webapp/student/view.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("student/view.jsp");
             dispatcher.forward(request, response);
         }
     }
 
     private void showCreateForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("src/main/webapp/student/create.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("student/create.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -141,7 +141,7 @@ public class StudentServlet extends HttpServlet {
             response.sendRedirect("error-404.jsp");
         } else {
             request.setAttribute("student", student);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("src/main/webapp/student/edit.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("student/edit.jsp");
             dispatcher.forward(request, response);
         }
     }
@@ -154,7 +154,7 @@ public class StudentServlet extends HttpServlet {
             response.sendRedirect("error-404.jsp");
         } else {
             request.setAttribute("student", student);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("src/main/webapp/student/delete.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("student/delete.jsp");
             dispatcher.forward(request, response);
         }
     }
@@ -163,7 +163,7 @@ public class StudentServlet extends HttpServlet {
         List<Student> students = studentService.findAll();
         request.setAttribute("student", students);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("src/main/webapp/student/list.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("student/list.jsp");
         dispatcher.forward(request, response);
     }
 }
